@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rejinth R — Full Stack Developer</title>
+  <meta name="description" content="Rejinth R — full-stack developer in Chennai building e-governance, payment and developer-tooling platforms with React, Node.js, Python and PHP.">
+  <meta property="og:title" content="Rejinth R — Full Stack Developer">
+  <meta property="og:description" content="E-governance, payments and developer tooling. React · Node.js · FastAPI · PHP · PostgreSQL.">
+  <meta name="theme-color" content="#5b4ce0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./asset/css/styles.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body>
+
+<!-- Ambient background: drifting gradient orbs + dot grid (parallax via data-speed) -->
+<div class="bg" aria-hidden="true">
+  <div class="orb-wrap" data-speed="-0.15" data-mouse="30"><div class="orb orb-1"></div></div>
+  <div class="orb-wrap" data-speed="-0.3" data-mouse="-40"><div class="orb orb-2"></div></div>
+  <div class="orb-wrap" data-speed="-0.08" data-mouse="20"><div class="orb orb-3"></div></div>
+  <div class="grid"></div>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="brand">Rejinth<span>.</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+      <i class="bi bi-moon-stars"></i>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="wrap hero-inner" id="heroInner">
+    <p class="status"><span class="dot"></span> Open to new opportunities</p>
+    <p class="eyebrow">Full Stack Developer · Chennai</p>
+    <h1>Rejinth <span class="grad-text">R</span></h1>
+    <p class="lede">
+      I build citizen-facing e-governance and payment platforms at <strong>TNeGA</strong>,
+      and the developer tools that keep them secure and shippable &mdash; from database schema
+      to production UI.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-solid"><i class="bi bi-grid-1x2"></i> View projects</a>
+      <a href="./asset/Rejinth-R-Resume.pdf" class="btn btn-ghost" download><i class="bi bi-download"></i> Download résumé</a>
+    </div>
+    <dl class="stats">
+      <div><dt>7+</dt><dd>years building software</dd></div>
+      <div><dt>12+</dt><dd>years professional experience</dd></div>
+      <div><dt>4</dt><dd>state-scale government platforms</dd></div>
+      <div><dt>3</dt><dd>in-house tools shipped in 2026</dd></div>
+    </dl>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About"><span></span></a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section wrap reveal">
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <p>
+        Full-stack developer with 7+ years of hands-on software development (12+ years total, including
+        prior research work). I work across React/Node.js and PHP stacks, with direct experience in
+        <strong>payment gateway integration</strong>, <strong>microservices architecture</strong> and
+        <strong>application security hardening</strong>. I'm comfortable owning a feature end to end and
+        have led small frontend teams.
+      </p>
+      <p>
+        Lately I've been building internal tooling in Python &mdash; a self-hosted CI/CD platform, a static
+        security auditor, and a geocoding microservice &mdash; to make the teams around me ship faster and
+        safer.
+      </p>
+      <p class="learning">
+        <i class="bi bi-graph-up-arrow"></i>
+        <span><strong>Currently studying data analytics</strong> &mdash; building on years of SQL, reporting
+        modules and ECharts dashboards to go deeper into analysis, not just presentation.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section wrap reveal">
+    <h2 class="section-title">Projects</h2>
+
+    <h3 class="sub-title"><i class="bi bi-tools"></i> Tools I built</h3>
+    <div class="feature-list">
+
+      <article class="feature">
+        <div class="feature-head">
+          <div class="feature-icon"><i class="bi bi-rocket-takeoff"></i></div>
+          <div>
+            <h4>DeployHub</h4>
+            <p class="meta">Self-hosted CI/CD deployment platform · 2026</p>
+          </div>
+        </div>
+        <p>
+          Replaces manual "SSH in and <code>git pull</code>" releases with a tracked, auditable, one-click
+          pipeline &mdash; without the weight of Jenkins or ArgoCD for teams deploying to a handful of servers
+          they control.
+        </p>
+        <ul class="points">
+          <li>Async worker pipeline: checkout → build → package → SSH deploy → atomic release switch → health check, with automatic rollback on failure</li>
+          <li>API never runs builds itself &mdash; jobs are queued to a separate Redis/arq worker so long builds don't block requests</li>
+          <li>JWT auth with rotating refresh tokens, Argon2id hashing, 5-role RBAC and encrypted credential storage</li>
+          <li>Deploy to any SSH-reachable server or AWS EC2; approve/reject/rollback with full deployment history</li>
+        </ul>
+        <ul class="tags">
+          <li>FastAPI</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Redis · arq</li><li>SQLAlchemy</li><li>asyncssh</li><li>TanStack Query</li><li>Zustand</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <div class="feature-head">
+          <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <h4>CodeAudit</h4>
+            <p class="meta">Local code security &amp; bug scanner · 2026</p>
+          </div>
+        </div>
+        <p>
+          A static analysis tool for PHP/JS web apps that runs entirely on-prem &mdash; no API keys, no
+          third-party calls &mdash; built on the Python standard library with a single optional dependency.
+        </p>
+        <ul class="points">
+          <li>71 rules across security, forms, uploads, performance and code quality, each mapped to an OWASP category</li>
+          <li>Catches SQL/command injection, file inclusion, open redirects, CORS misconfig, insecure cookies, secrets in web storage and more</li>
+          <li>Dead-file detection for stale backups, and frontend-to-backend payload field matching</li>
+          <li>Scan a local path, an upload, a git clone or a remote server over SFTP; export reports as PDF, XLSX, HTML, Markdown or JSON (PDF and XLSX hand-built, no libraries)</li>
+        </ul>
+        <ul class="tags">
+          <li>Python (stdlib)</li><li>Static analysis</li><li>OWASP</li><li>paramiko · SFTP</li><li>Vanilla JS</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <div class="feature-head">
+          <div class="feature-icon"><i class="bi bi-geo-alt"></i></div>
+          <div>
+            <h4>DIGIPIN Service</h4>
+            <p class="meta">Geocoding microservice · 2026</p>
+          </div>
+        </div>
+        <p>
+          A stateless API that encodes latitude/longitude into India Post's DIGIPIN national addressing
+          grid code and decodes it back, implemented from the Department of Posts technical specification
+          (March 2025).
+        </p>
+        <ul class="points">
+          <li>Encode/decode endpoints in both GET and POST forms, with validation for out-of-bounds coordinates and malformed codes</li>
+          <li>Edge-of-grid behaviour kept identical to the official service for parity</li>
+          <li>Response contract and dated logging aligned with existing services so the PHP apps can proxy it directly</li>
+          <li>Shipped with a Postman collection and a deploy bundle</li>
+        </ul>
+        <ul class="tags">
+          <li>FastAPI</li><li>Pydantic</li><li>Uvicorn</li><li>REST</li><li>Postman</li>
+        </ul>
+      </article>
+    </div>
+
+    <h3 class="sub-title"><i class="bi bi-bank"></i> Government &amp; client work</h3>
+    <div class="card-grid">
+      <article class="card">
+        <p class="card-kicker">TNeGA</p>
+        <h4>DBT &mdash; Direct Beneficiary Transfer</h4>
+        <ul class="points">
+          <li>Full-stack app for direct fund transfer to beneficiaries</li>
+          <li>Secure payment gateway integration</li>
+          <li>Optimised queries for faster transaction processing</li>
+        </ul>
+        <ul class="tags"><li>Node.js</li><li>Express</li><li>React</li><li>PostgreSQL</li></ul>
+      </article>
+
+      <article class="card">
+        <p class="card-kicker">Welfare scheme</p>
+        <h4>MUT &mdash; Magalir Urimai Thittam</h4>
+        <ul class="points">
+          <li>Responsive portal for the women's welfare scheme</li>
+          <li>Backend services for applicant data validation</li>
+          <li>Role-based access control for multiple user types</li>
+        </ul>
+        <ul class="tags"><li>React</li><li>Node.js</li><li>MongoDB</li></ul>
+      </article>
+
+      <article class="card">
+        <p class="card-kicker">Water management</p>
+        <h4>CMWSSB &mdash; Chennai Metro Water</h4>
+        <ul class="points">
+          <li>Dashboard for water supply monitoring</li>
+          <li>Billing and consumption reporting modules</li>
+          <li>Real-time interactive charts</li>
+        </ul>
+        <ul class="tags"><li>React</li><li>Node.js</li><li>PostgreSQL</li></ul>
+      </article>
+
+      <article class="card">
+        <p class="card-kicker">Department module</p>
+        <h4>SSP &mdash; State Scholarship Portal</h4>
+        <ul class="points">
+          <li>Scheme management, fee abstracts, EMIS/UMIS applicant tracking</li>
+          <li>Data-table reports with filters and PDF/Excel export</li>
+          <li>ECharts dashboards for scheme-wise analytics</li>
+        </ul>
+        <ul class="tags"><li>PHP MVC</li><li>jQuery</li><li>DataTables</li><li>ECharts</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section wrap reveal">
+    <h2 class="section-title">Experience</h2>
+    <ol class="timeline">
+      <li>
+        <div class="tl-date">2024 &ndash; Present</div>
+        <div class="tl-body">
+          <h4>Full Stack Developer</h4>
+          <p class="meta">TNeGA &mdash; Tamil Nadu e-Governance Agency</p>
+          <ul class="points">
+            <li>Develop frontend and backend features for citizen-facing e-governance applications</li>
+            <li>Built the core logic for a streamlined digital payment processing workflow</li>
+            <li>Adopted a microservices architecture and hardened security for sensitive citizen and transaction data</li>
+            <li>Built internal tooling for deployment, security auditing and geocoding (see Projects)</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-date">2023 &ndash; 2024</div>
+        <div class="tl-body">
+          <h4>Project Engineer</h4>
+          <p class="meta">Haoda Payment Solutions</p>
+          <ul class="points">
+            <li>Led frontend development and a small team of developers</li>
+            <li>Owned end-to-end integration of a payment API, redesigning the workflow for faster processing</li>
+            <li>Ran market research and competitive analysis on competitors and emerging technologies</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-date">2019 &ndash; 2023</div>
+        <div class="tl-body">
+          <h4>Junior Developer</h4>
+          <p class="meta">JSM International Tour and Travels</p>
+          <ul class="points">
+            <li>Developed and maintained web applications for tour and travel booking</li>
+            <li>Designed and implemented new features with senior developers</li>
+            <li>Took part in code reviews and team planning</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="tl-date">2014 &ndash; 2018</div>
+        <div class="tl-body">
+          <h4>Junior Researcher</h4>
+          <p class="meta">ITAAC Research Center</p>
+          <ul class="points">
+            <li>Researched market demand and competitor products to inform strategy</li>
+            <li>Translated findings into feature requirements with cross-functional teams</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section wrap reveal">
+    <h2 class="section-title">Skills</h2>
+    <dl class="skills">
+      <div><dt>Languages</dt><dd>JavaScript (ES6+), TypeScript, Python, PHP, SQL</dd></div>
+      <div><dt>Frontend</dt><dd>React, Redux, Zustand, TanStack Query, HTML5, CSS3, Tailwind, Bootstrap, jQuery</dd></div>
+      <div><dt>Backend</dt><dd>Node.js, Express, FastAPI, PHP Core (MVC), REST APIs, microservices, background job queues</dd></div>
+      <div><dt>Data</dt><dd>PostgreSQL, MongoDB, MySQL, Redis, SQLAlchemy, Alembic</dd></div>
+      <div><dt>Security &amp; Payments</dt><dd>JWT, OAuth 2.0, RBAC, Argon2, credential encryption, payment gateway integration, OWASP-driven code auditing</dd></div>
+      <div><dt>DevOps &amp; Tools</dt><dd>Git/GitHub, CI/CD (GitHub Actions), SSH deployment automation, Docker, Postman, Agile/Scrum</dd></div>
+    </dl>
+  </section>
+
+  <!-- EDUCATION + MORE -->
+  <section class="section wrap reveal">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">Education</h2>
+        <ul class="edu">
+          <li><span class="edu-year">2011 &ndash; 2013</span><strong>B.E. Computer Science</strong><span>Bethlahem Institute of Engineering, Karungal</span></li>
+          <li><span class="edu-year">2008 &ndash; 2010</span><strong>Diploma in Computer Engineering</strong><span>Sri Krishna Polytechnic College, Nagercoil</span></li>
+          <li><span class="edu-year">2007</span><strong>Secondary School</strong><span>Shekara Pillai Higher Sec. School, Arumanai</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">Beyond the job</h2>
+        <ul class="extras">
+          <li><i class="bi bi-bar-chart-line"></i><div><strong>Learning data analytics</strong> &mdash; currently studying analysis and visualisation to complement my reporting and dashboard work.</div></li>
+          <li><i class="bi bi-people"></i><div><strong>Mentorship</strong> &mdash; mentoring junior developers on web technologies and code organisation.</div></li>
+          <li><i class="bi bi-github"></i><div><strong>Open source</strong> &mdash; contributions to React components and Node.js utilities.</div></li>
+          <li><i class="bi bi-stars"></i><div><strong>AI in the workflow</strong> &mdash; using AI-assisted tools to speed up coding, debugging and docs.</div></li>
+          <li><i class="bi bi-youtube"></i><div><strong>YouTube automation</strong> &mdash; publishing and metadata workflows for channels.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section wrap reveal">
+    <div class="contact">
+      <h2>Let's work together</h2>
+      <p>Open to full-time roles and freelance work in full-stack, platform and developer-tooling engineering.</p>
+      <div class="contact-links">
+        <a href="mailto:rejinthdeveloper@gmail.com"><i class="bi bi-envelope"></i> rejinthdeveloper@gmail.com</a>
+        <a href="tel:+918925331130"><i class="bi bi-telephone"></i> +91 89253 31130</a>
+        <span><i class="bi bi-geo-alt"></i> Chennai, Tamil Nadu</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+  <p>&copy; <span id="year">2026</span> Rejinth R</p>
+  <a href="#top">Back to top <i class="bi bi-arrow-up"></i></a>
+</footer>
+
+<script src="./asset/js/script.js"></script>
+</body>
+</html>
